@@ -31,4 +31,33 @@ pool.query(sqlText,[newKoala.name, newKoala.age, newKoala.sex, newKoala.ready_to
 })
 })
 
+router.delete('/delete/:id', (request, response) =>{
+const id = request.params.id;
+const sqlText = `DELETE FROM koalas WHERE id=$1`;
+pool.query(sqlText, [id])
+  .then((result)=> {
+    console.log('Deleted', result);
+    response.sendStatus(200);
+  })
+  .catch((error)=> {
+    console.log('Koala not deleted');
+    response.sendStatus(500);
+  })
+})
+
+router.put('/transfer/:id',(request, response)=> {
+const id = request.params.id;
+const sqlText = `UPDATE koalas SET ready_to_transfer='Y' WHERE id=$1`;
+pool.query(sqlText, [id])
+  .then((result)=> {
+    console.log('FREEDOM', result);
+    response.sendStatus(200);
+  })
+  .catch((error)=> {
+    console.log('enslaved');
+    response.sendStatus(500);
+  })
+})
+
+
 module.exports = router;

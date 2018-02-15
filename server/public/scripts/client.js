@@ -21,7 +21,17 @@ $( document ).ready( function(){
     // call saveKoala with the new obejct
     saveKoala( newKoala );
   }); //end addButton on click
-}); // end doc ready
+  $('#viewKoalas').on('click', '.deleteButton', function(){
+    console.log('Ex-Term-In-Nate');
+    let deleteKoala = $(this).data('id');
+    terminateKoala(deleteKoala);
+  })
+  $('#viewKoalas').on('click', '.transferButton', function(){
+    console.log('Beam me up scotty');
+    let soberKoala = $(this).data('id');
+    transferKoala(soberKoala);
+  })
+  }); // end doc ready
 
 function getKoalas(){
   console.log( 'in getKoalas' );
@@ -60,6 +70,41 @@ function saveKoala( newKoala ){
 function exposeKoalas(koalas){
   $('#viewKoalas').empty();
   for(let koala of koalas){
-    $('#viewKoalas').append(`<div> ${koala.name}, ${koala.sex}, ${koala.age}, ${koala.ready_to_transfer}, ${koala.notes} </div> `)
+    if (koala.ready_to_transfer == 'N'){
+      $('#viewKoalas').append(`<tr><td> ${koala.name}</td><td> ${koala.sex}</td><td> ${koala.age}</td><td> ${koala.ready_to_transfer}<button class="transferButton" data-id=${koala.id}>Ready</button> </td><td> ${koala.notes} </td>
+      <td><button class="deleteButton" data-id=${koala.id}>Murder</button> </td></tr> `)
+    }
+    else {
+
+    $('#viewKoalas').append(`<tr><td> ${koala.name}</td><td> ${koala.sex}</td><td> ${koala.age}</td><td> ${koala.ready_to_transfer}</td><td> ${koala.notes} </td>
+    <td><button class="deleteButton" data-id=${koala.id}>Murder</button> </td></tr> `)}
   }
+}
+
+function terminateKoala(id){
+  $.ajax ({
+    type : 'DELETE',
+    url :`/koalas/delete/${id}`,
+  })
+  .done (function( response ){
+    console.log( 'Deleted Koala ', response );
+    getKoalas();
+  })// end done
+  .fail (function(){
+    console.log( 'Koala survived');
+  }) //end fail
+}
+
+function transferKoala(id){
+  $.ajax ({
+    type: 'put',
+    url: `/koalas/transfer/${id}`
+  })
+    .done (function( response ){
+      console.log( 'rehabed Koala ', response );
+      getKoalas();
+    })// end done
+    .fail (function(){
+      console.log( 'relasped koala');
+  })
 }
