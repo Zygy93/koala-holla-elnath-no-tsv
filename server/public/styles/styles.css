@@ -1,0 +1,35 @@
+.jumbotron {
+  background-color: DarkSeaGreen;
+}
+
+.title {
+  padding-top: 50px;
+  border-bottom: 2px;
+  border-color: black;
+}
+
+.logo {
+  float: left;
+  height: 200px;
+  width: 200px;
+  margin: 12px;
+}
+
+.table {
+  border: solid;
+  border-color: DarkSeaGreen;
+  border-width: 2px;
+}
+
+#addKoala {
+  border-width: 2px;
+  border-color: inherit;
+}
+
+.koalaBody {
+  padding: 15px
+}
+
+.transferButton {
+  margin-left: 10px;
+}
