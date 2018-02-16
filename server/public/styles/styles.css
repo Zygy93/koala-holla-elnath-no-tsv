@@ -33,3 +33,6 @@
 .transferButton {
   margin-left: 10px;
 }
+.deleteButton{
+  background-color: red;
+}

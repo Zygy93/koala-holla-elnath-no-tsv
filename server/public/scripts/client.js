@@ -63,7 +63,7 @@ function saveKoala( newKoala ){
       getKoalas();
     })// end done
     .fail (function(){
-      console.log( 'WOMP, cant gettem');
+      console.log( 'WOMP, cant postem');
     }) //end fail
 }//end saveKoala
 
@@ -87,7 +87,7 @@ function terminateKoala(id){
     url :`/koalas/delete/${id}`,
   })
   .done (function( response ){
-    console.log( 'Deleted Koala ', response );
+    console.log( 'Koala has been poached', response );
     getKoalas();
   })// end done
   .fail (function(){

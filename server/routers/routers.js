@@ -22,11 +22,11 @@ const sqlText = `INSERT INTO koalas(name, age, sex, ready_to_transfer, notes)
 VALUES( $1,$2,$3,$4,$5 )`;
 pool.query(sqlText,[newKoala.name, newKoala.age, newKoala.sex, newKoala.ready_to_transfer, newKoala.notes])
 .then((result)=> {
-  console.log('addem', result);
+  console.log('Hello new friend', result);
   response.sendStatus(200);
 })
 .catch((error)=> {
-  console.log('WOMP, no koalas');
+  console.log('WOMP, no new friend');
   response.sendStatus(500);
 })
 })
@@ -36,7 +36,7 @@ const id = request.params.id;
 const sqlText = `DELETE FROM koalas WHERE id=$1`;
 pool.query(sqlText, [id])
   .then((result)=> {
-    console.log('Deleted', result);
+    console.log('Avada Kedavra!', result);
     response.sendStatus(200);
   })
   .catch((error)=> {
@@ -50,11 +50,11 @@ const id = request.params.id;
 const sqlText = `UPDATE koalas SET ready_to_transfer='Y' WHERE id=$1`;
 pool.query(sqlText, [id])
   .then((result)=> {
-    console.log('FREEDOM', result);
+    console.log('Salvation');
     response.sendStatus(200);
   })
   .catch((error)=> {
-    console.log('enslaved');
+    console.log('Womp Womp');
     response.sendStatus(500);
   })
 })

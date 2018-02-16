@@ -1,14 +1,16 @@
-CREATE TABLE koala (
-    id serial primary key,
-    name varchar(120),
-    gender varchar(120),
-    age varchar(120),
-    funniness INT DEFAULT 1
-    );
+CREATE TABLE koalas(
+id serial primary key,
+name varchar(30),
+sex varchar(30),
+age int,
+ready_to_transfer varchar(1),
+notes varchar(120)
+);
 
-INSERT INTO "jokes"(whoseJoke, jokeQuestion, punchLine) VALUES
-('Danny', 'Why do scuba divers fall backwards out of boats?','If they fell forwards they’d still be in the boat!'),
-('Luke', 'Twofish are in a tank. What did one fish say to the other?','Do you know how to drive this thing?'),
-('Millie', 'What do you call a pile of cats?', 'A meowntain!'),
-('dEv', 'Why should you not play cards in the forest?', 'Too many Cheetahs!'),
-('Scott', 'I went to the zoo the other day, it had one dog...', 'It was a shih tzu');
+INSERT INTO koalas (name, sex, age, ready_to_transfer, notes)
+VALUES ('Scotty', 'M', 4, 'Y','Born in Guatemala'),
+('Jean','F', 5,'Y', 'Allergic to lots of lava'),
+('Ororo', 'F', 7, 'N', 'Loves listening to Paula (Abdul)'),
+('Logan','M',15 ,'N', 'Loves the sauna'),
+('Charlie','M',9 ,'Y', 'Favorite band is Nirvana'),
+('Betsy', 'F',4, 'Y', 'She has a pet iguana');
